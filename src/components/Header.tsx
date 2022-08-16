@@ -1,5 +1,6 @@
 import '../index.css';
 
+import { Link } from 'react-router-dom';
 import logoImg from '../img/logoImg.png';
 import { useState } from 'react';
 
@@ -9,9 +10,9 @@ export const Header = () => {
   return (
     <nav className="navbar">
       <img className="logo" src={logoImg} alt="Logo" />
-      <a href="/" className="brand-name">
+      <Link to="/" className="brand-name">
         University Management
-      </a>
+      </Link>
       <button
         className="hamburger"
         onClick={() => {
@@ -32,16 +33,16 @@ export const Header = () => {
       <div className={isNavExpanded ? 'navigation-menu expanded' : 'navigation-menu'}>
         <ul>
           <li>
-            <a href="/students">Students</a>
+            <Link to="/students">Students</Link>
           </li>
           <li>
-            <a href="/groups">Groups</a>
+            <Link to="/groups">Groups</Link>
           </li>
           <li>
-            <a href="/courses">Courses</a>
+            <Link to="/courses">Courses</Link>
           </li>
           <li>
-            <a href="/teachers">Teachers</a>
+            <Link to="/professors">Professors</Link>
           </li>
         </ul>
       </div>
