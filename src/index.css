@@ -16,6 +16,8 @@
   background-color: #666;
   color: #ffc132;
   box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
+  position: sticky;
+  top: 0;
 }
 
 .brand-name {
@@ -83,7 +85,7 @@
 @media screen and (max-width: 768px) {
   .navigation-menu ul {
     position: absolute;
-    top: 60px;
+    top: 76px;
     left: 0;
     flex-direction: column;
     width: 100%;
@@ -117,4 +119,43 @@
   height: 60px;
   border: 0;
   padding: 0.5rem;
+}
+
+/*MAIN PAGE STYLE*/
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.background {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  background-color: #8f8f8f;
+  height: 100%;
+  background: url('../src/img/pexels-tirachard-kumtanom-733856.jpg') center center/cover no-repeat;
+}
+.welcome-text {
+  color: white;
+  font-size: 3rem;
+  padding: 1.5rem;
+}
+
+/*FOOTER STYLE*/
+
+.footer {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0.5rem 0rem;
+  background-color: #666;
+  color: #ffc132;
+  box-shadow: 2px 2px 2px 0 rgba(9, 9, 9, 0.23);
 }
