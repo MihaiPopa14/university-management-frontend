@@ -9,14 +9,16 @@ export const Students = () => {
     <div className="container">
       <div className="table-container">
         <h1 className="student-section-title">Students table</h1>
-        <div className="student-controls">
+        <div className={isInputActive ? 'student-controls large' : 'student-controls small'}>
           <div className={isInputActive ? 'student-input active' : 'student-input'}>
             <form className="student-form" action="">
-              <label htmlFor="">Name</label>
+              <label htmlFor="">Name:</label>
               <input type="text" />
-              <label htmlFor="">Surname</label>
+              <label htmlFor="">Surname:</label>
               <input type="text" />
-              <input className="submit-btn" type="submit" value="Submit" />
+              <button className="submit-btn" type="submit" value="Submit">
+                Submit
+              </button>
             </form>
           </div>
           <button
@@ -36,8 +38,8 @@ export const Students = () => {
               <th>Group</th>
               <th>Grades</th>
             </tr>
-            <tbody></tbody>
           </thead>
+          <tbody></tbody>
         </table>
       </div>
     </div>
