@@ -1,6 +1,7 @@
 import '../index.css';
 
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+
 import logoImg from '../img/logoImg.png';
 import { useState } from 'react';
 
@@ -33,16 +34,30 @@ export const Header = () => {
       <div className={isNavExpanded ? 'navigation-menu expanded' : 'navigation-menu'}>
         <ul>
           <li>
-            <Link to="/students">Students</Link>
+            <NavLink
+              to="/students"
+              style={({ isActive }) => (isActive ? { color: '#f05b40' } : {})}
+            >
+              Students
+            </NavLink>
           </li>
           <li>
-            <Link to="/groups">Groups</Link>
+            <NavLink to="/groups" style={({ isActive }) => (isActive ? { color: '#f05b40' } : {})}>
+              Groups
+            </NavLink>
           </li>
           <li>
-            <Link to="/courses">Courses</Link>
+            <NavLink to="/courses" style={({ isActive }) => (isActive ? { color: '#f05b40' } : {})}>
+              Courses
+            </NavLink>
           </li>
           <li>
-            <Link to="/professors">Professors</Link>
+            <NavLink
+              to="/professors"
+              style={({ isActive }) => (isActive ? { color: '#f05b40' } : {})}
+            >
+              Professors
+            </NavLink>
           </li>
         </ul>
       </div>
