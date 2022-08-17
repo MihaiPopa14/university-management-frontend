@@ -6,6 +6,7 @@ import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Main } from './components/Main';
 import React from 'react';
+import { Students } from './components/Students';
 
 function App() {
   return (
@@ -17,6 +18,16 @@ function App() {
             <>
               <Header />
               <Main />
+              <Footer />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/students"
+          element={
+            <>
+              <Header />
+              <Students />
               <Footer />
             </>
           }
