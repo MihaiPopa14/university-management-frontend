@@ -140,7 +140,7 @@ body {
 
 .container {
   width: 100%;
-  height: calc(100% - 152px);
+  height: calc(100% - 132px);
   background-color: white;
   display: flex;
   align-items: center;
@@ -164,7 +164,7 @@ body {
 /*FOOTER STYLE*/
 
 .footer {
-  height: 60px;
+  height: 40px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -391,3 +391,5 @@ body {
 .group-table tbody tr:last-of-type {
   border-bottom: 2px solid #3d3d3d;
 }
+
+/*COURSES STYLE*/

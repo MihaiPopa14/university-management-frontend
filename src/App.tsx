@@ -2,10 +2,12 @@ import './index.css';
 
 import { Route, Routes } from 'react-router-dom';
 
+import { Courses } from './components/Courses';
 import { Footer } from './components/Footer';
 import { Groups } from './components/Groups';
 import { Header } from './components/Header';
 import { Main } from './components/Main';
+import { Professors } from './components/Professors';
 import React from 'react';
 import { Students } from './components/Students';
 
@@ -39,6 +41,26 @@ function App() {
             <>
               <Header />
               <Groups />
+              <Footer />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/courses"
+          element={
+            <>
+              <Header />
+              <Courses />
+              <Footer />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/professors"
+          element={
+            <>
+              <Header />
+              <Professors />
               <Footer />
             </>
           }
