@@ -247,10 +247,12 @@ body {
 
 .student-form label {
   margin: 0;
+  color: #ffc132;
 }
 
 .student-form input {
   vertical-align: middle;
+  background-color: #8f8f8f;
   margin: 0px 0px 10px 0;
   padding: 10px;
   border: 1px solid #ffc132;
@@ -291,14 +293,14 @@ body {
 
 .add-student-btn:hover {
   background-color: #f05b40;
-  color: black;
-  border: 2px solid black;
+  color: #3d3d3d;
+  border: 2px solid #3d3d3d;
 }
 
 .submit-btn:hover {
   background-color: #f05b40;
-  color: black;
-  border: 2px solid black;
+  color: #3d3d3d;
+  border: 2px solid #3d3d3d;
 }
 
 .student-input {
@@ -333,12 +335,14 @@ body {
 
 .group-form label {
   margin: 0px 0px 5px 0;
+  color: #ffc132;
 }
 
 .group-form input {
   vertical-align: middle;
   margin: 0 0px 5px 0;
   padding: 10px;
+  background-color: #8f8f8f;
   border: 1px solid #ffc132;
 }
 
