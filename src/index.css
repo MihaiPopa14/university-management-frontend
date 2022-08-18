@@ -192,6 +192,8 @@ body {
   width: 100%;
   border-collapse: collapse;
   margin: 25px 0;
+  text-align: center;
+  vertical-align: middle;
   font-size: 1.3em;
   min-width: 400px;
 }
@@ -202,9 +204,16 @@ body {
   height: 40px;
 }
 
-.student-table th,
+.student-table thead th {
+  width: 25%;
+  text-transform: uppercase;
+}
+
+.student-table th {
+  padding: 8px;
+}
 .student-table td {
-  padding: 12px, 15px;
+  padding: 8px;
 }
 
 .student-table tbody tr {
@@ -212,7 +221,7 @@ body {
 }
 
 .student-table tbody tr:nth-child(even) {
-  background-color: #666;
+  background-color: #3d3d3d;
 }
 
 .student-table tbody tr:last-of-type {
@@ -368,6 +377,8 @@ body {
 .group-table {
   width: 100%;
   border-collapse: collapse;
+  text-align: center;
+  vertical-align: middle;
   margin: 15px 0;
   font-size: 1.3em;
   min-width: 400px;
@@ -379,9 +390,16 @@ body {
   height: 40px;
 }
 
-.group-table th,
+.group-table thead th {
+  width: 25%;
+  text-transform: uppercase;
+}
+
+.group-table th {
+  padding: 8px;
+}
 .group-table td {
-  padding: 12px 15px;
+  padding: 8px;
 }
 
 .group-table tbody tr {
