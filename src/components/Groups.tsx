@@ -1,8 +1,8 @@
 import '../index.css';
 
-import React, { useEffect, useState } from 'react';
+import React, { MouseEvent, useEffect, useState } from 'react';
 import { StateStructure, groupsCountSelector, groupsSelector } from '../features/group/selectors';
-import { getGroups, getGroupsFailed, getGroupsSuccess } from '../features/group/actions';
+import { addGroup, getGroups, getGroupsFailed, getGroupsSuccess } from '../features/group/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Group } from '../types/Group';
@@ -38,6 +38,58 @@ export const Groups = () => {
     getData();
   }, []);
 
+  const addGroupReq = async (event: MouseEvent) => {
+    event.preventDefault();
+    const newGroup: Group = {
+      groupNr: parseInt(numberText),
+      field: fieldText,
+      year: parseInt(yearText)
+    };
+    dispatch(addGroup(newGroup));
+  };
+
+  const onDataInput = (e: React.ChangeEvent<HTMLInputElement>, setterMethod: Function) => {
+    setShowErrorMsg(false);
+    setShowSuccessMsg(false);
+    setterMethod(e.target.value);
+  };
+
+  const handleSubmit = (e: React.MouseEvent) => {
+    addGroupReq(e);
+    // setIsInputActive(false);
+  };
+
+  const grNrCheckAndHandle = (val: string) => {
+    const num = Number(val);
+    if (val.length === 0) {
+      setNumberText('');
+    }
+    if (isNaN(num)) {
+      return;
+    }
+    if (num < 1) {
+      return;
+    }
+    setNumberText(num.toString());
+  };
+
+  const yearCheckAndHandle = (val: string) => {
+    const num = Number(val);
+    if (val.length === 0) {
+      setYearText('');
+    }
+    if (isNaN(num)) {
+      return;
+    }
+    if (num < 1 || num > 4) {
+      return;
+    }
+    setYearText(num.toString());
+  };
+
+  const validForm: boolean =
+    numberText.length !== 0 && fieldText.length !== 0 && yearText.length !== 0;
+
   return (
     <div className="container">
       <div className="table-container">
@@ -46,12 +98,38 @@ export const Groups = () => {
           <div className={isInputActive ? 'group-input active' : 'group-input'}>
             <form className="group-form" action="">
               <label htmlFor="">Number:</label>
-              <input type="text" />
+              <input
+                type="text"
+                onChange={e => {
+                  setShowErrorMsg(false);
+                  setShowSuccessMsg(false);
+                  grNrCheckAndHandle(e.target.value);
+                }}
+              />
               <label htmlFor="">Field:</label>
-              <input type="text" />
+              <input
+                type="text"
+                onChange={e => {
+                  setShowErrorMsg(false);
+                  setShowSuccessMsg(false);
+                  setFieldText(e.target.value);
+                }}
+              />
               <label htmlFor="">Year:</label>
-              <input type="text" />
-              <button className="submit-btn" type="submit" value="Submit">
+              <input
+                type="text"
+                onChange={e => {
+                  setShowErrorMsg(false);
+                  setShowSuccessMsg(false);
+                  yearCheckAndHandle(e.target.value);
+                }}
+                placeholder="Year (1-4)"
+              />
+              <button
+                className={!validForm ? 'disabled' : 'submit-btn'}
+                disabled={!validForm}
+                onClick={e => handleSubmit(e)}
+              >
                 Submit
               </button>
             </form>
@@ -71,6 +149,8 @@ export const Groups = () => {
               <th>Number</th>
               <th>Field</th>
               <th>Year</th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -81,6 +161,12 @@ export const Groups = () => {
                     <td>{gr.groupNr}</td>
                     <td>{gr.field}</td>
                     <td>{gr.year}</td>
+                    <td>
+                      <button className="edit-btn">Edit</button>
+                    </td>
+                    <td>
+                      <button className="delete-btn">Delete</button>
+                    </td>
                   </tr>
                 );
               })}

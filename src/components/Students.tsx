@@ -84,7 +84,11 @@ export const Students = () => {
               <input type="text" onChange={e => onNameChange(e, setNameText)} />
               <label htmlFor="">Surname:</label>
               <input type="text" onChange={e => onNameChange(e, setSurNameText)} />
-              <button disabled={!validForm} className="submit-btn" onClick={e => handleSubmit(e)}>
+              <button
+                disabled={!validForm}
+                className={!validForm ? 'disabled' : 'submit-btn'}
+                onClick={e => handleSubmit(e)}
+              >
                 Submit
               </button>
             </form>
@@ -107,6 +111,8 @@ export const Students = () => {
               <th>Surname</th>
               <th>Group</th>
               <th>Grades</th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -118,6 +124,12 @@ export const Students = () => {
                     <td>{st.surName}</td>
                     <td>{st.surName}</td>
                     <td>{st.surName}</td>
+                    <td>
+                      <button className="edit-btn">Edit</button>
+                    </td>
+                    <td>
+                      <button className="delete-btn">Delete</button>
+                    </td>
                   </tr>
                 );
               })}

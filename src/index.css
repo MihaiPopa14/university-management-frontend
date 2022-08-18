@@ -86,6 +86,7 @@ body {
 }
 .hamburger:hover {
   background-color: #f05b40;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
@@ -122,6 +123,7 @@ body {
 
   .navigation-menu li:hover {
     background-color: #666;
+    cursor: pointer;
   }
 
   .navigation-menu.expanded ul {
@@ -191,7 +193,7 @@ body {
 .student-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 25px 0;
+  margin: 15px 0;
   text-align: center;
   vertical-align: middle;
   font-size: 1.3em;
@@ -205,7 +207,7 @@ body {
 }
 
 .student-table thead th {
-  width: 25%;
+  width: 15%;
   text-transform: uppercase;
 }
 
@@ -248,7 +250,7 @@ body {
 }
 .student-form {
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: row;
   width: 80%;
   align-items: center;
   justify-content: space-between;
@@ -262,7 +264,7 @@ body {
 .student-form input {
   vertical-align: middle;
   background-color: #8f8f8f;
-  margin: 0px 0px 10px 0;
+  margin: 0px 10px 0px 0;
   padding: 10px;
   border: 1px solid #ffc132;
 }
@@ -282,7 +284,7 @@ body {
   width: 100px;
   height: 35px;
   font-size: 16px;
-  font-size: 13px;
+  font-size: 15px;
   border: 2px solid #ffc132;
   border-radius: 5px;
   background-color: #666;
@@ -304,12 +306,14 @@ body {
   background-color: #f05b40;
   color: #3d3d3d;
   border: 2px solid #3d3d3d;
+  cursor: pointer;
 }
 
 .submit-btn:hover {
   background-color: #f05b40;
   color: #3d3d3d;
   border: 2px solid #3d3d3d;
+  cursor: pointer;
 }
 
 .student-input {
@@ -336,20 +340,20 @@ body {
 
 .group-form {
   display: flex;
-  flex-flow: column wrap;
-  width: 80%;
+  flex-flow: row wrap;
+  width: 100%;
   align-items: center;
-  justify-content: space-between;
 }
 
 .group-form label {
-  margin: 0px 0px 5px 0;
+  margin: 5px 10px 5px 0;
   color: #ffc132;
 }
 
 .group-form input {
   vertical-align: middle;
-  margin: 0 0px 5px 0;
+  width: 100px;
+  margin: 5px 10px 5px 0;
   padding: 10px;
   background-color: #8f8f8f;
   border: 1px solid #ffc132;
@@ -367,7 +371,7 @@ body {
 }
 
 .student-controls.large {
-  height: 40%;
+  height: 100px;
 }
 
 .student-controls.small {
@@ -391,7 +395,7 @@ body {
 }
 
 .group-table thead th {
-  width: 25%;
+  width: 20%;
   text-transform: uppercase;
 }
 
@@ -414,4 +418,58 @@ body {
   border-bottom: 2px solid #3d3d3d;
 }
 
-/*COURSES STYLE*/
+/*OTHER STYLES*/
+
+.edit-btn {
+  width: 100px;
+  height: 35px;
+  font-size: 16px;
+  font-size: 18px;
+  border: 2px solid #ffc132;
+  border-radius: 5px;
+  background-color: #666;
+  color: #ffc132;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.edit-btn:hover {
+  background-color: #f05b40;
+  color: #3d3d3d;
+  border: 2px solid #3d3d3d;
+  cursor: pointer;
+}
+
+.delete-btn {
+  width: 100px;
+  height: 35px;
+  font-size: 16px;
+  font-size: 18px;
+  border: 2px solid #ffc132;
+  border-radius: 5px;
+  background-color: #666;
+  color: #ffc132;
+  transition: background-color 0.2s ease-in-out;
+}
+.delete-btn:hover {
+  background-color: #f05b40;
+  color: #3d3d3d;
+  border: 2px solid #3d3d3d;
+  cursor: pointer;
+}
+
+.disabled {
+  height: 30px;
+  width: 5rem;
+  font-size: 13px;
+  border: 2px solid #3d3d3d;
+  border-radius: 5px;
+  background-color: #666;
+  color: #3d3d3d;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.disabled:hover {
+  color: #3d3d3d;
+  border: 2px solid #3d3d3d;
+  cursor: not-allowed;
+}
