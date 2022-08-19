@@ -374,6 +374,12 @@ body {
   height: 100px;
 }
 
+@media screen and (max-width: 768px) {
+  .student-controls.large {
+    height: 40%;
+  }
+}
+
 .student-controls.small {
   height: 30px;
 }

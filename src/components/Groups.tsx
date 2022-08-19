@@ -38,7 +38,7 @@ export const Groups = () => {
     getData();
   }, []);
 
-  const addGroupReq = async (event: MouseEvent) => {
+  const addGroupReq = async (event: React.MouseEvent) => {
     event.preventDefault();
     const newGroup: Group = {
       groupNr: parseInt(numberText),
@@ -60,6 +60,8 @@ export const Groups = () => {
   };
 
   const grNrCheckAndHandle = (val: string) => {
+    setShowErrorMsg(false);
+    setShowSuccessMsg(false);
     const num = Number(val);
     if (val.length === 0) {
       setNumberText('');
@@ -74,6 +76,8 @@ export const Groups = () => {
   };
 
   const yearCheckAndHandle = (val: string) => {
+    setShowErrorMsg(false);
+    setShowSuccessMsg(false);
     const num = Number(val);
     if (val.length === 0) {
       setYearText('');
@@ -100,9 +104,8 @@ export const Groups = () => {
               <label htmlFor="">Number:</label>
               <input
                 type="text"
+                value={numberText}
                 onChange={e => {
-                  setShowErrorMsg(false);
-                  setShowSuccessMsg(false);
                   grNrCheckAndHandle(e.target.value);
                 }}
               />
@@ -110,24 +113,20 @@ export const Groups = () => {
               <input
                 type="text"
                 onChange={e => {
-                  setShowErrorMsg(false);
-                  setShowSuccessMsg(false);
-                  setFieldText(e.target.value);
+                  onDataInput(e, setFieldText);
                 }}
               />
               <label htmlFor="">Year:</label>
               <input
                 type="text"
+                value={yearText}
                 onChange={e => {
-                  setShowErrorMsg(false);
-                  setShowSuccessMsg(false);
                   yearCheckAndHandle(e.target.value);
                 }}
                 placeholder="Year (1-4)"
               />
               <button
                 className={!validForm ? 'disabled' : 'submit-btn'}
-                disabled={!validForm}
                 onClick={e => handleSubmit(e)}
               >
                 Submit
