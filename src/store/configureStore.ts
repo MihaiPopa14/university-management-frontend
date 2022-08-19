@@ -1,14 +1,18 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
+import coursesReducer from '../features/course/reducers';
 import createSagaMiddleware from 'redux-saga';
 import groupsReducer from '../features/group/reducers';
+import professorsReducer from '../features/professor/reducers';
 import rootSaga from './rootSaga';
 import studentsReducer from '../features/student/reducers';
 
 // Combines all the reducers in to a root reducers
 const combinedReducer = combineReducers({
   studentsSection: studentsReducer,
-  groupsSection: groupsReducer
+  groupsSection: groupsReducer,
+  coursesSection: coursesReducer,
+  professorsSection: professorsReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();
