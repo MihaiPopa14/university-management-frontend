@@ -1,5 +1,6 @@
 export type Group = {
-  groupNr:number,
-  field: string,
-  year: number
-}
+  _id?: string;
+  groupNr: number;
+  field: string;
+  year: number;
+};

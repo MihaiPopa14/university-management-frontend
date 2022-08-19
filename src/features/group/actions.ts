@@ -10,3 +10,8 @@ export const addGroup = createAction<Group>('addGroup');
 
 export const addGroupSuccess = createAction<Group>('addGroupSuccess');
 export const addGroupFailed = createAction('addGroupFailed');
+
+export const deleteGroup = createAction<string | undefined>('deleteGroup');
+
+export const deleteGroupSuccess = createAction<string>('deleteGroupSuccess');
+export const deleteGroupFailed = createAction('deleteGroupFailed');

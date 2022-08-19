@@ -1,12 +1,13 @@
 import '../index.css';
+import 'react-toastify/dist/ReactToastify.css';
 
-import React, { MouseEvent, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StateStructure, groupsCountSelector, groupsSelector } from '../features/group/selectors';
-import { addGroup, getGroups, getGroupsFailed, getGroupsSuccess } from '../features/group/actions';
+import { ToastContainer, toast } from 'react-toastify';
+import { addGroup, deleteGroup, getGroups } from '../features/group/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Group } from '../types/Group';
-import { fetchGroups } from '../features/group/apiCalls';
 import { useNavigate } from 'react-router-dom';
 import { useUpdateEffect } from '../hooks/useUpdateEffect';
 
@@ -24,21 +25,23 @@ export const Groups = () => {
 
   const groups: Array<Group> = useSelector((state: StateStructure) => groupsSelector(state));
 
+  const success = () => {
+    toast.success('Operation successful!');
+  };
+
   useUpdateEffect(() => navigate('/groups'), [groupsCount]);
   useEffect(() => {
-    const getData = async () => {
-      dispatch(getGroups());
-      try {
-        const response = await fetchGroups();
-        dispatch(getGroupsSuccess(response));
-      } catch (error) {
-        dispatch(getGroupsFailed());
-      }
-    };
-    getData();
+    dispatch(getGroups());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const addGroupReq = async (event: React.MouseEvent) => {
+  useEffect(() => {
+    setNumberText('');
+    setFieldText('');
+    setYearText('');
+  }, [groups]);
+
+  const addGroupReq = (event: React.MouseEvent) => {
     event.preventDefault();
     const newGroup: Group = {
       groupNr: parseInt(numberText),
@@ -46,6 +49,12 @@ export const Groups = () => {
       year: parseInt(yearText)
     };
     dispatch(addGroup(newGroup));
+    toast.success('Group added successfully');
+  };
+
+  const handleDelete = (id: string | undefined) => {
+    if (window.confirm('Delete group?')) dispatch(deleteGroup(id));
+    toast.success('Group deleted');
   };
 
   const onDataInput = (e: React.ChangeEvent<HTMLInputElement>, setterMethod: Function) => {
@@ -54,10 +63,10 @@ export const Groups = () => {
     setterMethod(e.target.value);
   };
 
-  const handleSubmit = (e: React.MouseEvent) => {
-    addGroupReq(e);
-    // setIsInputActive(false);
-  };
+  // const handleSubmit = (e: React.MouseEvent) => {
+  //   addGroupReq(e);
+  //   // setIsInputActive(false);
+  // };
 
   const grNrCheckAndHandle = (val: string) => {
     setShowErrorMsg(false);
@@ -97,7 +106,9 @@ export const Groups = () => {
   return (
     <div className="container">
       <div className="table-container">
-        <h1 className="student-section-title">Groups table</h1>
+        <h1 className="student-section-title" onClick={success}>
+          Groups table
+        </h1>
         <div className={isInputActive ? 'student-controls large' : 'student-controls small'}>
           <div className={isInputActive ? 'group-input active' : 'group-input'}>
             <form className="group-form" action="">
@@ -125,10 +136,9 @@ export const Groups = () => {
                 }}
                 placeholder="Year (1-4)"
               />
-              <button
-                className={!validForm ? 'disabled' : 'submit-btn'}
-                onClick={e => handleSubmit(e)}
-              >
+              {showSuccessMsg && <p>Student was successfully added!!</p>}
+              {showErrorMsg && <p>Error occurred while adding student! Please try again later!</p>}
+              <button className={!validForm ? 'disabled' : 'submit-btn'} onClick={addGroupReq}>
                 Submit
               </button>
             </form>
@@ -164,7 +174,9 @@ export const Groups = () => {
                       <button className="edit-btn">Edit</button>
                     </td>
                     <td>
-                      <button className="delete-btn">Delete</button>
+                      <button className="delete-btn" onClick={() => handleDelete(gr._id)}>
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 );
@@ -172,6 +184,7 @@ export const Groups = () => {
           </tbody>
         </table>
       </div>
+      <ToastContainer />
     </div>
   );
 };

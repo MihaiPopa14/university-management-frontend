@@ -1,6 +1,6 @@
 import * as groupActions from './actions';
 
-import { addGroupFy, fetchGroups } from './apiCalls';
+import { addGroupFy, deleteGroupFy, fetchGroups } from './apiCalls';
 import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
 
 import { Group } from '../../types/Group';
@@ -23,11 +23,21 @@ function* addGroup(action: { type: string; payload: Group }) {
   }
 }
 
+function* deleteGroup(action: { type: string; payload: string }) {
+  try {
+    const response: string = yield call(deleteGroupFy, action.payload);
+    yield put(groupActions.deleteGroupSuccess(response));
+  } catch (error) {
+    yield put(groupActions.deleteGroupFailed());
+  }
+}
+
 //Watch all the actions related to group
 
 function* watchGroupSaga() {
   yield takeLatest(groupActions.getGroups, getGroups);
   yield takeLatest(groupActions.addGroup, addGroup);
+  yield takeLatest(groupActions.deleteGroup, deleteGroup);
 }
 
 export default function* groupSaga() {

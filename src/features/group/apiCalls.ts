@@ -18,3 +18,8 @@ export const addGroupFy = async (newGroup: Group) => {
     .json();
   return response;
 };
+
+export const deleteGroupFy = async (groupId: string) => {
+  const response: string = await api.delete(`groups/${groupId}`).json();
+  return response;
+};
