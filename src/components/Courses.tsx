@@ -108,33 +108,35 @@ export const Courses = () => {
             Add course
           </button>
         </div>
-        <table className="group-table">
-          <thead>
-            <tr>
-              <th>Course name</th>
-              <th>Credit number</th>
-              <th>Edit</th>
-              <th>delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {courses.length > 0 &&
-              courses.map((gr: Course, index: number) => {
-                return (
-                  <tr key={`rok-${index}`}>
-                    <td>{gr.courseName}</td>
-                    <td>{gr.creditNr}</td>
-                    <td>
-                      <button className="edit-btn">Edit</button>
-                    </td>
-                    <td>
-                      <button className="delete-btn">Delete</button>
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
+        <div className="sticky-header-table">
+          <table className="group-table">
+            <thead>
+              <tr>
+                <th>Course name</th>
+                <th>Credit number</th>
+                <th>Edit</th>
+                <th>delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {courses.length > 0 &&
+                courses.map((gr: Course, index: number) => {
+                  return (
+                    <tr key={`rok-${index}`}>
+                      <td>{gr.courseName}</td>
+                      <td>{gr.creditNr}</td>
+                      <td>
+                        <button className="edit-btn">Edit</button>
+                      </td>
+                      <td>
+                        <button className="delete-btn">Delete</button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        </div>
       </div>
       <ToastContainer />
     </div>

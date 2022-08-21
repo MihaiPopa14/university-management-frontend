@@ -103,35 +103,37 @@ export const Professors = () => {
             Add professor
           </button>
         </div>
-        <table className="group-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Surname</th>
-              <th>Title</th>
-              <th>edit</th>
-              <th>delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {professors.length > 0 &&
-              professors.map((gr: Professor, index: number) => {
-                return (
-                  <tr key={`rok-${index}`}>
-                    <td>{gr.name}</td>
-                    <td>{gr.surName}</td>
-                    <td>{gr.title}</td>
-                    <td>
-                      <button className="edit-btn">Edit</button>
-                    </td>
-                    <td>
-                      <button className="delete-btn">Delete</button>
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
+        <div className="sticky-header-table">
+          <table className="group-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Title</th>
+                <th>edit</th>
+                <th>delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {professors.length > 0 &&
+                professors.map((gr: Professor, index: number) => {
+                  return (
+                    <tr key={`rok-${index}`}>
+                      <td>{gr.name}</td>
+                      <td>{gr.surName}</td>
+                      <td>{gr.title}</td>
+                      <td>
+                        <button className="edit-btn">Edit</button>
+                      </td>
+                      <td>
+                        <button className="delete-btn">Delete</button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        </div>
       </div>
       <ToastContainer />
     </div>

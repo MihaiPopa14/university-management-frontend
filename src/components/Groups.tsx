@@ -152,37 +152,39 @@ export const Groups = () => {
             Add group
           </button>
         </div>
-        <table className="group-table">
-          <thead>
-            <tr>
-              <th>Number</th>
-              <th>Field</th>
-              <th>Year</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {groups.length > 0 &&
-              groups.map((gr: Group, index: number) => {
-                return (
-                  <tr key={`rok-${index}`}>
-                    <td>{gr.groupNr}</td>
-                    <td>{gr.field}</td>
-                    <td>{gr.year}</td>
-                    <td>
-                      <button className="edit-btn">Edit</button>
-                    </td>
-                    <td>
-                      <button className="delete-btn" onClick={() => handleDelete(gr._id)}>
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
+        <div className="sticky-header-table">
+          <table className="group-table">
+            <thead>
+              <tr>
+                <th>Number</th>
+                <th>Field</th>
+                <th>Year</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {groups.length > 0 &&
+                groups.map((gr: Group, index: number) => {
+                  return (
+                    <tr key={`rok-${index}`}>
+                      <td>{gr.groupNr}</td>
+                      <td>{gr.field}</td>
+                      <td>{gr.year}</td>
+                      <td>
+                        <button className="edit-btn">Edit</button>
+                      </td>
+                      <td>
+                        <button className="delete-btn" onClick={() => handleDelete(gr._id)}>
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        </div>
       </div>
       <ToastContainer />
     </div>

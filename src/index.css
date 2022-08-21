@@ -47,6 +47,7 @@ body {
 
 .navigation-menu {
   margin-left: auto;
+  z-index: 9999;
 }
 
 .navigation-menu ul {
@@ -128,6 +129,7 @@ body {
 
   .navigation-menu.expanded ul {
     display: block;
+    z-index: 9999;
   }
 }
 
@@ -193,11 +195,35 @@ body {
 .student-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 15px 0;
+  margin: 0;
   text-align: center;
   vertical-align: middle;
   font-size: 1.3em;
   min-width: 400px;
+}
+.sticky-header-table {
+  width: 100%;
+  margin: 15px 0;
+  min-height: 400px;
+  max-height: 450px;
+  overflow-y: auto;
+}
+
+.sticky-header-table::-webkit-scrollbar {
+  width: 10px;
+}
+.sticky-header-table::-webkit-scrollbar-track {
+  background-color: #3d3d3d;
+}
+.sticky-header-table::-webkit-scrollbar-thumb {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #ffc132;
+}
+
+.sticky-header-table thead tr {
+  position: sticky;
+  top: 0;
+  z-index: 0;
 }
 
 .student-table thead tr {
@@ -389,7 +415,7 @@ body {
   border-collapse: collapse;
   text-align: center;
   vertical-align: middle;
-  margin: 15px 0;
+  margin: 0;
   font-size: 1.3em;
   min-width: 400px;
 }

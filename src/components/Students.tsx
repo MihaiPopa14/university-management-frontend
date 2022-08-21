@@ -104,37 +104,39 @@ export const Students = () => {
             Add student
           </button>
         </div>
-        <table className="student-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Surname</th>
-              <th>Group</th>
-              <th>Grades</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {students.length > 0 &&
-              students.map((st: Student, index: number) => {
-                return (
-                  <tr key={`rok-${index}`}>
-                    <td>{st.name}</td>
-                    <td>{st.surName}</td>
-                    <td>{st.surName}</td>
-                    <td>{st.surName}</td>
-                    <td>
-                      <button className="edit-btn">Edit</button>
-                    </td>
-                    <td>
-                      <button className="delete-btn">Delete</button>
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
+        <div className="sticky-header-table">
+          <table className="student-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Group</th>
+                <th>Grades</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {students.length > 0 &&
+                students.map((st: Student, index: number) => {
+                  return (
+                    <tr key={`rok-${index}`}>
+                      <td>{st.name}</td>
+                      <td>{st.surName}</td>
+                      <td>{st.surName}</td>
+                      <td>{st.surName}</td>
+                      <td>
+                        <button className="edit-btn">Edit</button>
+                      </td>
+                      <td>
+                        <button className="delete-btn">Delete</button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
