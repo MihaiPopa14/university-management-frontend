@@ -35,6 +35,17 @@ const studentsReducer = createReducer(initialState, builder => {
     .addCase(actions.addStudentsFailed, state => {
       state.isLoading = false;
     })
+    .addCase(actions.deleteStudent, state => {
+      state.isLoading = true;
+    })
+    .addCase(actions.deleteStudentSuccess, (state, action) => {
+      state.isLoading = false;
+      state.students = state.students.filter(item => item._id !== action.payload);
+    })
+    .addCase(actions.deleteStudentFailed, state => {
+      state.isLoading = false;
+    })
+
     .addDefaultCase((state, action) => {});
 });
 

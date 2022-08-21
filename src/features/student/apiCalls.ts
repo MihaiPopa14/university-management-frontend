@@ -18,3 +18,8 @@ export const addStudentFy = async (newStudent: Student) => {
     .json();
   return response;
 };
+
+export const deleteStudentFy = async (studId: string) => {
+  const response: string = await api.delete(`students/${studId}`).json();
+  return response;
+};

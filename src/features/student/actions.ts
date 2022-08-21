@@ -10,3 +10,8 @@ export const addStudent = createAction<Student>('addStudent');
 
 export const addStudentsSuccess = createAction<Student>('addStudentsSuccess');
 export const addStudentsFailed = createAction('addStudentsFailed');
+
+export const deleteStudent = createAction<string | undefined>('deleteStudent');
+
+export const deleteStudentSuccess = createAction<string>('deleteStudentSuccess');
+export const deleteStudentFailed = createAction('deleteStudentFailed');

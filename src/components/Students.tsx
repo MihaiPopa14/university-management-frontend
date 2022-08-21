@@ -6,8 +6,10 @@ import {
   studentsCountSelector,
   studentsSelector
 } from '../features/student/selectors';
+import { ToastContainer, toast } from 'react-toastify';
 import {
   addStudent,
+  deleteStudent,
   getStudents,
   getStudentsFailed,
   getStudentsSuccess
@@ -59,6 +61,12 @@ export const Students = () => {
     setNameText('');
     setSurNameText('');
   }; //To be fixed
+
+  const handleDelete = (id: string | undefined) => {
+    if (window.confirm('Delete student?')) dispatch(deleteStudent(id));
+    console.log(id);
+    //toast.success('Group deleted');
+  };
 
   const students: Array<Student> = useSelector((state: StateStructure) => studentsSelector(state));
 
@@ -129,7 +137,9 @@ export const Students = () => {
                         <button className="edit-btn">Edit</button>
                       </td>
                       <td>
-                        <button className="delete-btn">Delete</button>
+                        <button className="delete-btn" onClick={() => handleDelete(st._id)}>
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   );
@@ -138,6 +148,7 @@ export const Students = () => {
           </table>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

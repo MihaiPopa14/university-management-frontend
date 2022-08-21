@@ -1,4 +1,5 @@
 export type Student = {
-  name: string,
-  surName: string
-}
+  _id?: string;
+  name: string;
+  surName: string;
+};
