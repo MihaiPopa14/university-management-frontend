@@ -8,7 +8,7 @@ import {
   coursesSelector
 } from '../features/course/selectors';
 import { ToastContainer, toast } from 'react-toastify';
-import { addCourse, getCourses } from '../features/course/actions';
+import { addCourse, deleteCourse, getCourses } from '../features/course/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Course } from '../types/Course';
@@ -44,13 +44,17 @@ export const Courses = () => {
       creditNr: parseInt(creditNumber)
     };
     dispatch(addCourse(newCourse));
-    toast.success('Course added!');
+    toast.success('Course added!', { theme: 'dark' });
   };
 
   const onDataInput = (e: React.ChangeEvent<HTMLInputElement>, setterMethod: Function) => {
     setShowErrorMsg(false);
     setShowSuccessMsg(false);
     setterMethod(e.target.value);
+  };
+  const handleDelete = (id: string | undefined) => {
+    if (window.confirm('Delete course?')) dispatch(deleteCourse(id));
+    toast.success('Course deleted', { theme: 'dark' });
   };
 
   const creditNrCheckAndHandle = (val: string) => {
@@ -129,7 +133,9 @@ export const Courses = () => {
                         <button className="edit-btn">Edit</button>
                       </td>
                       <td>
-                        <button className="delete-btn">Delete</button>
+                        <button className="delete-btn" onClick={() => handleDelete(gr._id)}>
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   );

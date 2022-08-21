@@ -35,13 +35,16 @@ const coursesReducer = createReducer(initialState, builder => {
     .addCase(actions.addCourseFailed, state => {
       state.isLoading = false;
     })
-    // .addCase(actions.deleteGroup, state => {
-    //   state.isLoading = true;
-    // })
-    // .addCase(actions.deleteGroupSuccess, (state, action) => {
-    //   state.isLoading = false;
-    //   state.groups.filter(item => item.id !== action.payload);
-    // })
+    .addCase(actions.deleteCourse, state => {
+      state.isLoading = true;
+    })
+    .addCase(actions.deleteCourseSuccess, (state, action) => {
+      state.isLoading = false;
+      state.courses = state.courses.filter(item => item._id !== action.payload);
+    })
+    .addCase(actions.deleteCourseFailed, state => {
+      state.isLoading = false;
+    })
     .addDefaultCase((state, action) => {});
 });
 

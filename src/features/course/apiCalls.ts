@@ -18,3 +18,8 @@ export const addCourseFy = async (newCourse: Course) => {
     .json();
   return response;
 };
+
+export const deleteCourseFy = async (courseId: string) => {
+  const response: string = await api.delete(`courses/${courseId}`).json();
+  return response;
+};
