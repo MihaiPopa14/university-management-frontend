@@ -8,7 +8,7 @@ import {
   professorsSelector
 } from '../features/professor/selectors';
 import { ToastContainer, toast } from 'react-toastify';
-import { addProfessor, getProfessors } from '../features/professor/actions';
+import { addProfessor, deleteProfessor, getProfessors } from '../features/professor/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Professor } from '../types/Professor';
@@ -43,6 +43,11 @@ export const Professors = () => {
   //   setSurName('');
   //   setTitle('');
   // }, [professors]);
+
+  const handleDelete = (id: string | undefined) => {
+    if (window.confirm('Delete professor?')) dispatch(deleteProfessor(id));
+    toast.success('Professor deleted', { theme: 'dark' });
+  };
 
   const handleClick = () => {
     setName('');
@@ -126,7 +131,9 @@ export const Professors = () => {
                         <button className="edit-btn">Edit</button>
                       </td>
                       <td>
-                        <button className="delete-btn">Delete</button>
+                        <button className="delete-btn" onClick={() => handleDelete(gr._id)}>
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   );

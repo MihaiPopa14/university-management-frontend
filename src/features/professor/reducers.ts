@@ -35,13 +35,16 @@ const professorsReducer = createReducer(initialState, builder => {
     .addCase(actions.addProfessorFailed, state => {
       state.isLoading = false;
     })
-    // .addCase(actions.deleteGroup, state => {
-    //   state.isLoading = true;
-    // })
-    // .addCase(actions.deleteGroupSuccess, (state, action) => {
-    //   state.isLoading = false;
-    //   state.groups.filter(item => item.id !== action.payload);
-    // })
+    .addCase(actions.deleteProfessor, state => {
+      state.isLoading = true;
+    })
+    .addCase(actions.deleteProfessorSuccess, (state, action) => {
+      state.isLoading = false;
+      state.professors = state.professors.filter(item => item._id !== action.payload);
+    })
+    .addCase(actions.deleteProfessorFailed, state => {
+      state.isLoading = false;
+    })
     .addDefaultCase((state, action) => {});
 });
 

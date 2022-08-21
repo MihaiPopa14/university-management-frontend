@@ -1,5 +1,6 @@
 export type Professor = {
-  name: string,
-  surName: string,
-  title:string
-}
+  _id?: string;
+  name: string;
+  surName: string;
+  title: string;
+};

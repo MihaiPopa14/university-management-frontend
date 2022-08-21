@@ -18,3 +18,7 @@ export const addProfessorFy = async (newProfessor: Professor) => {
     .json();
   return response;
 };
+export const deleteProfessorFy = async (profId: string) => {
+  const response: string = await api.delete(`professors/${profId}`).json();
+  return response;
+};
