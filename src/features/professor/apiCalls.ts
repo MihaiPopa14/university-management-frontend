@@ -2,7 +2,7 @@ import { Professor } from '../../types/Professor';
 import ky from 'ky';
 
 const api = ky.create({
-  prefixUrl: 'http://192.168.1.2:5000'
+  prefixUrl: 'http://192.168.1.5:5000'
 });
 
 export const fetchProfessors = async () => {
