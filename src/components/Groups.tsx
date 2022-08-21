@@ -26,7 +26,7 @@ export const Groups = () => {
   const groups: Array<Group> = useSelector((state: StateStructure) => groupsSelector(state));
 
   const success = () => {
-    toast.success('Operation successful!');
+    toast.success('Operation successful!', { theme: 'dark' });
   };
 
   useUpdateEffect(() => navigate('/groups'), [groupsCount]);
@@ -49,12 +49,12 @@ export const Groups = () => {
       year: parseInt(yearText)
     };
     dispatch(addGroup(newGroup));
-    toast.success('Group added successfully');
+    toast.success('Group added successfully', { theme: 'dark' });
   };
 
   const handleDelete = (id: string | undefined) => {
     if (window.confirm('Delete group?')) dispatch(deleteGroup(id));
-    toast.success('Group deleted');
+    toast.success('Group deleted', { theme: 'dark' });
   };
 
   const onDataInput = (e: React.ChangeEvent<HTMLInputElement>, setterMethod: Function) => {
