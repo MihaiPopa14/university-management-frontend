@@ -53,8 +53,12 @@ export const Courses = () => {
     setterMethod(e.target.value);
   };
   const handleDelete = (id: string | undefined) => {
-    if (window.confirm('Delete course?')) dispatch(deleteCourse(id));
-    toast.success('Course deleted', { theme: 'dark' });
+    if (window.confirm('Delete course?')) {
+      dispatch(deleteCourse(id));
+      toast.success('Course deleted', { theme: 'dark' });
+    } else {
+      toast.warn('Deletion cancelled', { theme: 'dark' });
+    }
   };
 
   const creditNrCheckAndHandle = (val: string) => {

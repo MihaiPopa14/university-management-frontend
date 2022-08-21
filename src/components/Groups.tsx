@@ -53,8 +53,12 @@ export const Groups = () => {
   };
 
   const handleDelete = (id: string | undefined) => {
-    if (window.confirm('Delete group?')) dispatch(deleteGroup(id));
-    toast.success('Group deleted', { theme: 'dark' });
+    if (window.confirm('Delete group?')) {
+      dispatch(deleteGroup(id));
+      toast.success('Group deleted', { theme: 'dark' });
+    } else {
+      toast.warn('Deletion cancelled', { theme: 'dark' });
+    }
   };
 
   const onDataInput = (e: React.ChangeEvent<HTMLInputElement>, setterMethod: Function) => {

@@ -45,8 +45,12 @@ export const Professors = () => {
   // }, [professors]);
 
   const handleDelete = (id: string | undefined) => {
-    if (window.confirm('Delete professor?')) dispatch(deleteProfessor(id));
-    toast.success('Professor deleted', { theme: 'dark' });
+    if (window.confirm('Delete professor?')) {
+      dispatch(deleteProfessor(id));
+      toast.success('Professor deleted', { theme: 'dark' });
+    } else {
+      toast.warn('Deletion cancelled', { theme: 'dark' });
+    }
   };
 
   const handleClick = () => {

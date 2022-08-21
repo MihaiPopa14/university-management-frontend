@@ -63,9 +63,12 @@ export const Students = () => {
   }; //To be fixed
 
   const handleDelete = (id: string | undefined) => {
-    if (window.confirm('Delete student?')) dispatch(deleteStudent(id));
-    console.log(id);
-    toast.success('Student deleted', { theme: 'dark' });
+    if (window.confirm('Delete student?')) {
+      dispatch(deleteStudent(id));
+      toast.success('Student deleted', { theme: 'dark' });
+    } else {
+      toast.warn('Deletion cancelled', { theme: 'dark' });
+    }
   };
 
   const students: Array<Student> = useSelector((state: StateStructure) => studentsSelector(state));
