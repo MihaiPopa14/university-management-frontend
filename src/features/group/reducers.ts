@@ -40,7 +40,7 @@ const groupsReducer = createReducer(initialState, builder => {
     })
     .addCase(actions.deleteGroupSuccess, (state, action) => {
       state.isLoading = false;
-      state.groups.filter(item => item._id !== action.payload);
+      state.groups = state.groups.filter(item => item._id !== action.payload);
     })
     .addCase(actions.deleteGroupFailed, state => {
       state.isLoading = false;
