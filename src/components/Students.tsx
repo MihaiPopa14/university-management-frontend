@@ -87,12 +87,12 @@ export const Students = () => {
     toast.success('Student added successfully', { theme: 'dark' });
   };
 
-  // const handleEditFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   event.preventDefault();
+  const handleEditFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
 
-  //   setNameText(event.target.value);
-  //   setSurNameText(event.target.value);
-  // };
+    setNameText(event.target.value);
+    setSurNameText(event.target.value);
+  };
 
   const handleEditClick = (e: React.MouseEvent, student: Student) => {
     e.preventDefault();
@@ -158,7 +158,10 @@ export const Students = () => {
                   return (
                     <>
                       {editId === st._id ? (
-                        <EditableRow />
+                        <EditableRow
+                          editFormData={editFormData}
+                          handleEditFormChange={handleEditFormChange}
+                        />
                       ) : (
                         <ReadOnlyRow
                           st={st}

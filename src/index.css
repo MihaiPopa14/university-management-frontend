@@ -43,6 +43,7 @@ body {
 }
 .brand-name:hover {
   color: #f05b40;
+  cursor: pointer;
 }
 
 .navigation-menu {

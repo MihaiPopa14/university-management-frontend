@@ -15,13 +15,13 @@ const ReadOnlyRow = ({
   handleEditClick: Function;
 }) => {
   return (
-    <tr key={`rok-${index}`} onClick={() => handleEditClick()}>
+    <tr key={`rok-${index}`}>
       <td>{st.name}</td>
       <td>{st.surName}</td>
       <td>{st.surName}</td>
       <td>{st.surName}</td>
       <td>
-        <button className="edit-btn" onClick={() => handleEdit()}>
+        <button className="edit-btn" onClick={() => handleEditClick()}>
           Edit
         </button>
       </td>
