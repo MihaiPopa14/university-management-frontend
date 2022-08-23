@@ -16,6 +16,8 @@ import {
 } from '../features/student/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
+import EditableRow from './EditableRow';
+import ReadOnlyRow from './ReadOnlyRow';
 import { Student } from '../types/Student';
 import { fetchStudents } from '../features/student/apiCalls';
 import { useNavigate } from 'react-router-dom';
@@ -49,6 +51,8 @@ export const Students = () => {
   const [surNameText, setSurNameText] = useState('');
   const [showErrorMsg, setShowErrorMsg] = useState(false);
   const [showSuccessMsg, setShowSuccessMsg] = useState(false);
+  const [editId, setEditId] = useState<string>('');
+  const [editFormData, setEditFormData] = useState({ name: '', surName: '' });
 
   const onNameChange = (e: React.ChangeEvent<HTMLInputElement>, setterMethod: Function) => {
     setShowErrorMsg(false);
@@ -80,7 +84,28 @@ export const Students = () => {
       surName: surNameText
     };
     dispatch(addStudent(newStudent));
+    toast.success('Student added successfully', { theme: 'dark' });
   };
+
+  // const handleEditFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   event.preventDefault();
+
+  //   setNameText(event.target.value);
+  //   setSurNameText(event.target.value);
+  // };
+
+  const handleEditClick = (e: React.MouseEvent, student: Student) => {
+    e.preventDefault();
+    if (student._id) setEditId(student._id);
+    const formValues = {
+      name: student.name,
+      surName: student.surName
+    };
+
+    setEditFormData(formValues);
+  };
+
+  const handleEdit = (event: React.MouseEvent, student: Student) => {};
 
   const validForm: boolean = nameText.length !== 0 && surNameText.length !== 0;
 
@@ -131,21 +156,37 @@ export const Students = () => {
               {students.length > 0 &&
                 students.map((st: Student, index: number) => {
                   return (
-                    <tr key={`rok-${index}`}>
-                      <td>{st.name}</td>
-                      <td>{st.surName}</td>
-                      <td>{st.surName}</td>
-                      <td>{st.surName}</td>
-                      <td>
-                        <button className="edit-btn">Edit</button>
-                      </td>
-                      <td>
-                        <button className="delete-btn" onClick={() => handleDelete(st._id)}>
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
+                    <>
+                      {editId === st._id ? (
+                        <EditableRow />
+                      ) : (
+                        <ReadOnlyRow
+                          st={st}
+                          index={index}
+                          handleDelete={handleDelete}
+                          handleEdit={handleEdit}
+                          handleEditClick={handleEditClick}
+                        />
+                      )}
+                    </>
                   );
+                  // editFormData={editFormData} handleEditFormChange={handleEditFormChange}
+                  // return (
+                  //   <tr key={`rok-${index}`}>
+                  //     <td>{st.name}</td>
+                  //     <td>{st.surName}</td>
+                  //     <td>{st.surName}</td>
+                  //     <td>{st.surName}</td>
+                  //     <td>
+                  //       <button className="edit-btn">Edit</button>
+                  //     </td>
+                  //     <td>
+                  //       <button className="delete-btn" onClick={() => handleDelete(st._id)}>
+                  //         Delete
+                  //       </button>
+                  //     </td>
+                  //   </tr>
+                  // );
                 })}
             </tbody>
           </table>

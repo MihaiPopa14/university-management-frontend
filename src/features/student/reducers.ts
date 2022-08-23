@@ -45,6 +45,18 @@ const studentsReducer = createReducer(initialState, builder => {
     .addCase(actions.deleteStudentFailed, state => {
       state.isLoading = false;
     })
+    .addCase(actions.editStudent, state => {
+      state.isLoading = true;
+    })
+    .addCase(actions.editStudentSuccess, (state, action) => {
+      state.isLoading = false;
+      state.students = state.students.map(student =>
+        student._id === action.payload._id ? (student = action.payload) : student
+      );
+    })
+    .addCase(actions.editStudentFailed, state => {
+      state.isLoading = false;
+    })
 
     .addDefaultCase((state, action) => {});
 });

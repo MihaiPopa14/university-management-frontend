@@ -2,7 +2,7 @@ import { Student } from '../../types/Student';
 import ky from 'ky';
 
 const api = ky.create({
-  prefixUrl: 'http://192.168.1.5:5000'
+  prefixUrl: 'http://192.168.0.114:5000'
 });
 
 export const fetchStudents = async () => {
@@ -21,5 +21,12 @@ export const addStudentFy = async (newStudent: Student) => {
 
 export const deleteStudentFy = async (studId: string) => {
   const response: string = await api.delete(`students/${studId}`).json();
+  return response;
+};
+
+export const editStudentFy = async (selectedStudent: Student) => {
+  const response: string = await api
+    .patch(`students/${selectedStudent._id}`, { json: selectedStudent })
+    .json();
   return response;
 };

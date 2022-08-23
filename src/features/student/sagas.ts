@@ -1,6 +1,6 @@
 import * as studentActions from './actions';
 
-import { addStudentFy, deleteStudentFy, fetchStudents } from './apiCalls';
+import { addStudentFy, deleteStudentFy, editStudentFy, fetchStudents } from './apiCalls';
 import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
 
 import { Student } from '../../types/Student';
@@ -32,12 +32,22 @@ function* deleteStudent(action: { type: string; payload: string }) {
   }
 }
 
+function* editStudent(action: { type: string; payload: Student }) {
+  try {
+    const response: Student = yield call(editStudentFy, action.payload);
+    yield put(studentActions.editStudentSuccess(response));
+  } catch (error) {
+    yield put(studentActions.editStudentFailed());
+  }
+}
+
 //Watch all the actions related to student
 
 function* watchStudentSaga() {
   yield takeLatest(studentActions.getStudents, getStudents);
   yield takeLatest(studentActions.addStudent, addStudent);
   yield takeLatest(studentActions.deleteStudent, deleteStudent);
+  yield takeLatest(studentActions.editStudent, editStudent);
 }
 
 export default function* studentSaga() {

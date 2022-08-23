@@ -15,3 +15,8 @@ export const deleteStudent = createAction<string | undefined>('deleteStudent');
 
 export const deleteStudentSuccess = createAction<string>('deleteStudentSuccess');
 export const deleteStudentFailed = createAction('deleteStudentFailed');
+
+export const editStudent = createAction<Student>('editStudent');
+
+export const editStudentSuccess = createAction<Student>('editStudentSuccess');
+export const editStudentFailed = createAction('editStudentFailed');
